@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="D:\ALL FILES\Rx\image.Rx\Rx.image3.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web. Rosan Xettri</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .flag-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flag-container img {
+            width: 1cm; /* Adjust as needed */
+            height: 1cm; /* Adjust as needed */
+        }
+
+        .clock, .date {
+            text-align: center;
+            margin-top: 20px;
+            color: white; /* Set font color to white */
+            font-weight: bold; /* Make the text bold */
+        }
+
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #1abc9c;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 40px;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a.right {
+            float: right;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Gap between columns */
+        }
+
+        .side {
+            flex: 30%;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        .main {
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #ddd;
+        }
+
+        /* Floating button and menu styles */
+        .floating-btn {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            user-select: none;
+        }
+
+        .menu {
+            position: absolute;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 5px;
+            width: 100px;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional styles for large screens */
+        @media screen and (min-width: 1200px) {
+            .container {
+                padding: 20mm; /* Wider margins for large screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="D:\ALL FILES\Rx\Rosan-Xettri\video.Rx/Rx.video3.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="container">
+        <!-- Flag and clock/date sections -->
+        <div class="flag-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg" alt="Nepal Flag">
+        </div>
+        <div class="clock" id="clock"></div>
+        <div class="date" id="date"></div>
+
+        <!-- Header section -->
+        <div class="header">
+            <h1>Rx Rosan</h1>
+            <h4>Webpage1</h4>
+            <p>Welcome To Rx Rosan Website.</p>
+            <p>Contact: Gmail: rkc242855@gmail.com, rosankc820@gmail.com</p>
+            <p>Banganga-10, Kaplvastu, Pakadiachapa (NEPAL)</p>
+        </div>
+
+        <!-- Navigation bar -->
+        <div class="navbar">
+            <a href="https://www.facebook.com/profile.php?id=100080715373071">Facebook Page Link</a>
+            <a href="https://www.youtube.com/channel/UCZ5eH3H4HvSzkqqHcAitPqA">YouTube Channel Link</a>
+            <a href="#">NEXT PAGE</a>
+        </div>
+
+        <!-- Main content row -->
+        <div class="row">
+            <!-- Side column (About Me) -->
+            <div class="side">
+                <h2>Video</h2>
+                <video width="300px" controls>
+                    <source src="D:\ALL FILES\Rx\Rosan-Xettri\video.Rx/Rx.video2.mp4" type="video/mp4">
+                </video>
+                <h2>About Me</h2>
+                <p>Hello everyone, I am Rosan KC, from Banganga-10, Kapilvastu, Pakadiachapa (NEPAL)</p>
+                <h3>Our services:</h3>
+                <p>Creating or Designing Image,</p>
+                <p>Logo design,</p>
+                <p>Any types of videos, thumbnails, etc.</p>
+            </div>
+            <!-- Main column (Programme Schedule and News Section) -->
+            <div class="main">
+                <h2>Video Collection</h2>
+                <video width="200px" controls>
+                    <source src="D:\ALL FILES\Rx\Rosan-Xettri\video.Rx/Rx.video1.mp4" type="video/mp4">
+                </video>
+                <video width="200px" controls>
+                    <source src="D:\ALL FILES\Rx\Rosan-Xettri\video.Rx/Rx.video1.mp4" type="video/mp4">
+                </video>
+                <video width="200px" controls>
+                    <source src="D:\ALL FILES\Rx\Rosan-Xettri\video.Rx/Rx.video1.mp4" type="video/mp4">
+                </video>
+
+                <h2>Programme Schedule</h2>
+                <h5><b>Schedule details:</b></h5>
+                <p>Schedule 1</p>
+                <p>Programme name ..., Date ..., time ..., Location ...</p>
+                <p>For more detail, <a href="#">Click the Link</a></p>
+                <p>Schedule 2</p>
+                <p>Programme name ..., Date ..., time ..., Location ...</p>
+                <p>For more detail, <a href="#">Click the Link</a></p>
+                <p>Schedule 3</p>
+                <p>Programme name ..., Date ..., time ..., Location ...</p>
+                <p>For more detail, <a href="#">Click the Link</a></p>
+                <br>
+                <h2>NEWS SECTION</h2>
+                <h5>TITLE OF NEWS OR UPDATE:</h5>
+                <p><a href="#">LINK 1</a></p>
+                <p><a href="#">LINK 2</a></p>
+            </div>
+        </div>
+
+        <!-- Footer section -->
+        <div class="footer">
+            <h2>Thank you for visiting my page</h2>
+            <h4>Please subscribe to my YouTube channel and follow my Facebook page.</h4>
+            <h3><b><i><a href="https://rxrosan.github.io/Rxwebpage1/">Home</a></i></b></h3>
+            <h3><i><b><a href="#">NEXT PAGE</a></b></i></h3>
+        </div>
+    </div>
+
+    <!-- Floating button and menu -->
+    <div class="floating-btn" id="floatingBtn">
+        <span>+</span>
+    </div>
+    <div class="menu" id="menu">
+        <a href="https://rxrosan.github.io/Rxwebpage1/">Home</a>
+        <a href="https://www.facebook.com/profile.php?id=100080715373071">Follow FbPage</a>
+        <a href="https://www.youtube.com/channel/UCZ5eH3H4HvSzkqqHcAitPqA">SUBS. YT</a>
+    </div>
+
+    <!-- JavaScript for clock update and floating button/menu functionality -->
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            // Time
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+
+            // Date
+            const year = now.getFullYear();
+            const month = now.toLocaleString('default', { month: 'long' });
+            const date = now.getDate();
+            const day = now.toLocaleString('default', { weekday: 'long' });
+            const dateString = `${day}, ${month} ${date}, ${year}`;
+
+            // Update HTML
+            document.getElementById('clock').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call to display clock immediately
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingBtn = document.getElementById('floatingBtn');
+            const menu = document.getElementById('menu');
+
+            let isDragging = false;
+            let offsetX, offsetY;
+
+            function toggleMenu() {
+                if (menu.style.display === 'none' || menu.style.display === '') {
+                    menu.style.display = 'flex';
+                } else {
+                    menu.style.display = 'none';
+                }
+            }
+
+            function onMouseDown(e) {
+                isDragging = true;
+                offsetX = e.clientX - floatingBtn.getBoundingClientRect().left;
+                offsetY = e.clientY - floatingBtn.getBoundingClientRect().top;
+                floatingBtn.style.transition = 'none';
+            }
+
+            function onMouseMove(e) {
+                if (isDragging) {
+                    floatingBtn.style.left = `${e.clientX - offsetX}px`;
+                    floatingBtn.style.top = `${e.clientY - offsetY}px`;
+                    positionMenu();
+                }
+            }
+
+            function onMouseUp() {
+                isDragging = false;
+                floatingBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
+            }
+
+            function onTouchStart(e) {
+                isDragging = true;
+                offsetX = e.touches[0].clientX - floatingBtn.getBoundingClientRect().left;
+                offsetY = e.touches[0].clientY - floatingBtn.getBoundingClientRect().top;
+                floatingBtn.style.transition = 'none';
+            }
+
+            function onTouchMove(e) {
+                if (isDragging) {
+                    floatingBtn.style.left = `${e.touches[0].clientX - offsetX}px`;
+                    floatingBtn.style.top = `${e.touches[0].clientY - offsetY}px`;
+                    positionMenu();
+                }
+            }
+
+            function onTouchEnd() {
+                isDragging = false;
+                floatingBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
+            }
+
+            function positionMenu() {
+                const rect = floatingBtn.getBoundingClientRect();
+                menu.style.left = `${rect.left + window.scrollX + rect.width / 2 - menu.clientWidth / 2}px`;
+                menu.style.top = `${rect.top + window.scrollY + rect.height + 10}px`;
+            }
+
+            floatingBtn.addEventListener('mousedown', onMouseDown);
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+
+            floatingBtn.addEventListener('touchstart', onTouchStart);
+            document.addEventListener('touchmove', onTouchMove);
+            document.addEventListener('touchend', onTouchEnd);
+
+            floatingBtn.addEventListener('click', toggleMenu);
+
+            // Initial positioning of the menu
+            positionMenu();
+        });
+    </script>
+</body>
+</html>

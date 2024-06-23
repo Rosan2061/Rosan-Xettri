@@ -376,12 +376,10 @@
             popup.style.display = 'none';
         });
 
-        // JavaScript code for the About link
-        const aboutLink = document.getElementById('aboutLink');
-        aboutLink.addEventListener('click', () => {
-            const aboutSection = document.createElement('div');
-            aboutSection.className = 'about';
-            aboutSection.innerHTML = `
+       floatingBtn.addEventListener('click', toggleMenu);
+            aboutLink.addEventListener('click', toggleAboutPopup); // Event listener for About link
+            closeAboutBtn.addEventListener('click', closeAboutPopup); // Event listener for Close button of About popup
+
                 <h2>About Me</h2>
                 <p>Hello everyone, I am Rosan KC, from Banganga-10, Kapilvastu, Pakadiachapa (NEPAL)</p>
                 <p>We offer services such as creating or designing images, logo design, any type of videos, thumbnails, etc.</p>

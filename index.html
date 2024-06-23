@@ -95,7 +95,10 @@
 
         /* Floating button and menu styles */
         .floating-btn {
-            position: absolute;
+            position: fixed;
+            right: 20px; /* Adjust as needed */
+            top: 50%;
+            transform: translateY(-50%);
             width: 50px;
             height: 50px;
             background-color: #007bff;
@@ -108,6 +111,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             z-index: 1000;
             user-select: none;
+            transition: left 0.3s ease, top 0.3s ease;
         }
 
         .menu {
@@ -139,11 +143,88 @@
             background-color: #0056b3;
         }
 
+        /* Popup window styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+            border-radius: 8px;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .popup-header h2 {
+            margin: 0;
+        }
+
+        .popup-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .popup-controls button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .popup-controls button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
         /* Additional styles for large screens */
         @media screen and (min-width: 1200px) {
             .container {
                 padding: 20mm; /* Wider margins for large screens */
             }
+        }
+
+        /* Styles for the About section */
+        .about {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .about h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .about p {
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -171,6 +252,7 @@
         <div class="navbar">
             <a href="https://www.facebook.com/profile.php?id=100080715373071">Facebook Page Link</a>
             <a href="https://www.youtube.com/channel/UCZ5eH3H4HvSzkqqHcAitPqA">YouTube Channel Link</a>
+            <a href="#" id="aboutLink">About</a> <!-- Added ID for About link -->
             <a href="#">NEXT PAGE</a>
         </div>
 
@@ -178,21 +260,17 @@
         <div class="row">
             <!-- Side column (About Me) -->
             <div class="side">
-                <h2>Image</h2>
-                <img src="image.Rx/Rx.image2.png" width="200px" alt="Image 2">
                 <h2>About Me</h2>
                 <p>Hello everyone, I am Rosan KC, from Banganga-10, Kapilvastu, Pakadiachapa (NEPAL)</p>
                 <h3>Our services:</h3>
                 <p>Creating or Designing Image,</p>
                 <p>Logo design,</p>
                 <p>Any types of videos, thumbnails, etc.</p>
+                <!-- Images button -->
+                <button id="showGallery">Show Images</button>
             </div>
             <!-- Main column (Programme Schedule and News Section) -->
             <div class="main">
-                <h2>Image Collection</h2>
-                <img src="image.Rx/Rx.image4.png" width="200px" alt="Image 4">
-                <img src="image.Rx/Rx.image5.png" width="200px" alt="Image 5">
-
                 <h2>Programme Schedule</h2>
                 <h5><b>Schedule details:</b></h5>
                 <p>Schedule 1</p>
@@ -205,54 +283,87 @@
                 <p>Programme name ..., Date ..., time ..., Location ...</p>
                 <p>For more detail, <a href="#">Click the Link</a></p>
                 <br>
-                <h2>NEWS SECTION</h2>
-                <h5>TITLE OF NEWS OR UPDATE:</h5>
-                <p><a href="#">LINK 1</a></p>
-                <p><a href="#">LINK 2</a></p>
+                <h2>News</h2>
+                <h5><b>News details:</b></h5>
+                <p>News 1</p>
+                <p>Headline ..., Date ..., time ...</p>
+                <p>For more detail, <a href="#">Click the Link</a></p>
+                <p>News 2</p>
+                <p>Headline ..., Date ..., time ...</p>
+                <p>For more detail, <a href="#">Click the Link</a></p>
+                <p>News 3</p>
+                <p>Headline ..., Date ..., time ...</p>
+                <p>For more detail, <a href="#">Click the Link</a></p>
+                <br>
             </div>
         </div>
 
         <!-- Footer section -->
         <div class="footer">
-            <h2>Thank you for visiting my page</h2>
+            <h2>Thank you for visiting my webpage</h2>
             <h4>Please subscribe to my YouTube channel and follow my Facebook page.</h4>
             <h3><b><i><a href="https://rosan2061.github.io/Rosan-Xettri/">Home</a></i></b></h3>
-            <h3><i><b><a href="#">NEXT PAGE</a></b></i></h3>
+            <h3><b><i><a href="https://www.youtube.com/channel/UCZ5eH3H4HvSzkqqHcAitPqA">Subscribe Channel</a></H3></B></I></h3>
+            <p><h3><B><I>© 2021 Rx Rosan. All rights reserved.</p></H3></B></I>
+        </div>
+
+        <!-- Popup window for images -->
+        <div class="popup" id="popup">
+            <div class="popup-header">
+                <h2>Images</h2>
+                <div class="popup-controls">
+                    <button id="minimizeBtn">Minimize</button>
+                    <button id="maximizeBtn">Maximize</button>
+                    <button id="closeBtn">Close</button>
+                </div>
+            </div>
+            <div class="popup-content">
+                <img src="image.Rx/Rx.image1.jpeg" alt="Image 1">
+                <img src="image.Rx/Rx.image2.png" alt="Image 2">
+                <img src="image.Rx/Rx.image3.png" alt="Image 3">
+                <!-- Add more images as needed -->
+            </div>
+        </div>
+
+        <!-- Floating button and menu -->
+        <div class="floating-btn" id="floatingBtn">
+            <span>&#9776;</span>
+        </div>
+        <div class="menu" id="menu">
+            <a href="https://rosan2061.github.io/rosanxettri">Home</a>
+            <a href="https://www.facebook.com/profile.php?id=100080715373071">Contact FbPage</a>
+            <a href="#">NOTHING</a>
+        </div>
+
+        <!-- About popup content -->
+        <div class="popup" id="aboutPopup">
+            <div class="popup-header">
+                <h2>About</h2>
+                <button id="closeAboutBtn">Close</button>
+            </div>
+            <div class="popup-content">
+                <h2>About Rosan KC</h2>
+                <p>Welcome to my webpage. I am Rosan KC from Banganga-10, Kapilvastu, Pakadiachapa, Nepal.</p>
+                <p>I specialize in creating and designing images, logos, and various types of videos and thumbnails.</p>
+                <p>Feel free to explore more about my services!</p>
+            </div>
         </div>
     </div>
 
-    <!-- Floating button and menu -->
-    <div class="floating-btn" id="floatingBtn">
-        <span>+</span>
-    </div>
-    <div class="menu" id="menu">
-        <a href="https://rosan2061.github.io/Rosan-Xettri/">Home</a>
-        <a href="https://www.facebook.com/profile.php?id=100080715373071">Follow FbPage</a>
-        <a href="https://www.youtube.com/channel/UCZ5eH3H4HvSzkqqHcAitPqA">SUBS. YT</a>
-    </div>
-
-    <!-- JavaScript for clock update and floating button/menu functionality -->
     <script>
+        // Clock and date script
         function updateClock() {
             const now = new Date();
-
-            // Time
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
-
-            // Date
-            const year = now.getFullYear();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const day = now.getDate();
             const month = now.toLocaleString('default', { month: 'long' });
-            const date = now.getDate();
-            const day = now.toLocaleString('default', { weekday: 'long' });
-            const dateString = `${day}, ${month} ${date}, ${year}`;
+            const year = now.getFullYear();
 
-            // Update HTML
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            const dateString = `${day} ${month}, ${year}`;
+
             document.getElementById('clock').textContent = timeString;
             document.getElementById('date').textContent = dateString;
         }
@@ -263,6 +374,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             const floatingBtn = document.getElementById('floatingBtn');
             const menu = document.getElementById('menu');
+            const aboutLink = document.getElementById('aboutLink'); // About link
+            const aboutPopup = document.getElementById('aboutPopup'); // About popup
+            const closeAboutBtn = document.getElementById('closeAboutBtn'); // Close button for About popup
+            const popup = document.getElementById('popup');
+            const closeBtn = document.getElementById('closeBtn');
+            const maximizeBtn = document.getElementById('maximizeBtn');
+            const minimizeBtn = document.getElementById('minimizeBtn');
 
             let isDragging = false;
             let offsetX, offsetY;
@@ -272,6 +390,22 @@
                     menu.style.display = 'flex';
                 } else {
                     menu.style.display = 'none';
+                }
+            }
+
+            function toggleAboutPopup() {
+                aboutPopup.style.display = 'block';
+            }
+
+            function closeAboutPopup() {
+                aboutPopup.style.display = 'none';
+            }
+
+            function toggleGallery() {
+                if (popup.style.display === 'none' || popup.style.display === '') {
+                    popup.style.display = 'block';
+                } else {
+                    popup.style.display = 'none';
                 }
             }
 
@@ -321,6 +455,22 @@
                 menu.style.top = `${rect.top + window.scrollY + rect.height + 10}px`;
             }
 
+            function maximizePopup() {
+                popup.style.width = '100%';
+                popup.style.height = '100%';
+                popup.style.top = '0';
+                popup.style.left = '0';
+                popup.style.transform = 'none';
+            }
+
+            function minimizePopup() {
+                popup.style.width = '80%';
+                popup.style.height = '80%';
+                popup.style.top = '50%';
+                popup.style.left = '50%';
+                popup.style.transform = 'translate(-50%, -50%)';
+            }
+
             floatingBtn.addEventListener('mousedown', onMouseDown);
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
@@ -330,6 +480,12 @@
             document.addEventListener('touchend', onTouchEnd);
 
             floatingBtn.addEventListener('click', toggleMenu);
+            aboutLink.addEventListener('click', toggleAboutPopup); // Event listener for About link
+            closeAboutBtn.addEventListener('click', closeAboutPopup); // Event listener for Close button of About popup
+            showGallery.addEventListener('click', toggleGallery);
+            closeBtn.addEventListener('click', toggleGallery);
+            maximizeBtn.addEventListener('click', maximizePopup);
+            minimizeBtn.addEventListener('click', minimizePopup);
 
             // Initial positioning of the menu
             positionMenu();

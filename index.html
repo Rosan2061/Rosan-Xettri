@@ -284,84 +284,62 @@
                 <p>For more detail, <a href="#">Click the Link</a></p>
                 <br>
                 <h2>News</h2>
-                <h5><b>News details:</b></h5>
-                <p>News 1</p>
-                <p>Headline ..., Date ..., time ...</p>
+                <p> News1: Description</p>
                 <p>For more detail, <a href="#">Click the Link</a></p>
-                <p>News 2</p>
-                <p>Headline ..., Date ..., time ...</p>
+                <p> News2: Description</p>
                 <p>For more detail, <a href="#">Click the Link</a></p>
-                <p>News 3</p>
-                <p>Headline ..., Date ..., time ...</p>
+                <p> News3: Description</p>
                 <p>For more detail, <a href="#">Click the Link</a></p>
-                <br>
+                <p> News4: Description</p>
+                <p>For more detail, <a href="#">Click the Link</a></p>
             </div>
         </div>
 
         <!-- Footer section -->
         <div class="footer">
-            <h2>Thank you for visiting my webpage</h2>
-            <h4>Please subscribe to my YouTube channel and follow my Facebook page.</h4>
-            <h3><b><i><a href="https://rosan2061.github.io/Rosan-Xettri/">Home</a></i></b></h3>
-            <h3><b><i><a href="https://www.youtube.com/channel/UCZ5eH3H4HvSzkqqHcAitPqA">Subscribe Channel</a></H3></B></I></h3>
-            <p><h3><B><I>© 2021 Rx Rosan. All rights reserved.</p></H3></B></I>
-        </div>
-
-        <!-- Popup window for images -->
-        <div class="popup" id="popup">
-            <div class="popup-header">
-                <h2>Images</h2>
-                <div class="popup-controls">
-                    <button id="minimizeBtn">Minimize</button>
-                    <button id="maximizeBtn">Maximize</button>
-                    <button id="closeBtn">Close</button>
-                </div>
-            </div>
-            <div class="popup-content">
-                <img src="image.Rx/Rx.image1.jpeg" alt="Image 1">
-                <img src="image.Rx/Rx.image2.png" alt="Image 2">
-                <img src="image.Rx/Rx.image3.png" alt="Image 3">
-                <!-- Add more images as needed -->
-            </div>
-        </div>
-
-        <!-- Floating button and menu -->
-        <div class="floating-btn" id="floatingBtn">
-            <span>&#9776;</span>
-        </div>
-        <div class="menu" id="menu">
-            <a href="https://rosan2061.github.io/rosanxettri">Home</a>
-            <a href="https://www.facebook.com/profile.php?id=100080715373071">Contact FbPage</a>
-            <a href="#">NOTHING</a>
-        </div>
-
-        <!-- About popup content -->
-        <div class="popup" id="aboutPopup">
-            <div class="popup-header">
-                <h2>About</h2>
-                <button id="closeAboutBtn">Close</button>
-            </div>
-            <div class="popup-content">
-                <h2>About Rosan KC</h2>
-                <p>Welcome to my webpage. I am Rosan KC from Banganga-10, Kapilvastu, Pakadiachapa, Nepal.</p>
-                <p>I specialize in creating and designing images, logos, and various types of videos and thumbnails.</p>
-                <p>Feel free to explore more about my services!</p>
-            </div>
+            <h2>Thank you for visiting!</h2>
+            <p>Contact: Gmail: rkc242855@gmail.com, rosankc820@gmail.com</p>
+            <p>Banganga-10, Kaplvastu, Pakadiachapa (NEPAL)</p>
         </div>
     </div>
 
+    <!-- Popup window for gallery -->
+    <div id="popup" class="popup">
+        <div class="popup-header">
+            <h2>Image Gallery</h2>
+            <div class="popup-controls">
+                <button id="closePopup">Close</button>
+            </div>
+        </div>
+        <img src="image.Rx/Rx.image1.jpeg" alt="Image 1">
+        <img src="image.Rx/Rx.image2.jpeg" alt="Image 2">
+        <img src="image.Rx/Rx.image3.png" alt="Image 3">
+        <!-- Add more images here -->
+    </div>
+
+    <!-- Floating button and menu -->
+    <div id="floatingBtn" class="floating-btn">Menu</div>
+    <div id="menu" class="menu">
+        <a href="https://www.facebook.com/profile.php?id=100080715373071">Facebook</a>
+        <a href="https://www.youtube.com/channel/UCZ5eH3H4HvSzkqqHcAitPqA">YouTube</a>
+        <a href="#">NEXT PAGE</a>
+    </div>
+
     <script>
-        // Clock and date script
+        // JavaScript code for clock and date
         function updateClock() {
             const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
+            let hours = now.getHours();
             const minutes = now.getMinutes().toString().padStart(2, '0');
             const seconds = now.getSeconds().toString().padStart(2, '0');
             const day = now.getDate();
             const month = now.toLocaleString('default', { month: 'long' });
             const year = now.getFullYear();
-
-            const timeString = `${hours}:${minutes}:${seconds}`;
+            
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const timeString = `${hours.toString().padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
             const dateString = `${day} ${month}, ${year}`;
 
             document.getElementById('clock').textContent = timeString;
@@ -371,124 +349,45 @@
         setInterval(updateClock, 1000);
         updateClock(); // Initial call to display clock immediately
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const floatingBtn = document.getElementById('floatingBtn');
-            const menu = document.getElementById('menu');
-            const aboutLink = document.getElementById('aboutLink'); // About link
-            const aboutPopup = document.getElementById('aboutPopup'); // About popup
-            const closeAboutBtn = document.getElementById('closeAboutBtn'); // Close button for About popup
-            const popup = document.getElementById('popup');
-            const closeBtn = document.getElementById('closeBtn');
-            const maximizeBtn = document.getElementById('maximizeBtn');
-            const minimizeBtn = document.getElementById('minimizeBtn');
+        // JavaScript code for the floating button and menu
+        const floatingBtn = document.getElementById('floatingBtn');
+        const menu = document.getElementById('menu');
 
-            let isDragging = false;
-            let offsetX, offsetY;
+        floatingBtn.addEventListener('click', () => {
+            menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'flex' : 'none';
+        });
 
-            function toggleMenu() {
-                if (menu.style.display === 'none' || menu.style.display === '') {
-                    menu.style.display = 'flex';
-                } else {
-                    menu.style.display = 'none';
-                }
+        document.addEventListener('click', (event) => {
+            if (!floatingBtn.contains(event.target) && !menu.contains(event.target)) {
+                menu.style.display = 'none';
             }
+        });
 
-            function toggleAboutPopup() {
-                aboutPopup.style.display = 'block';
-            }
+        // JavaScript code for the popup window
+        const showGalleryButton = document.getElementById('showGallery');
+        const popup = document.getElementById('popup');
+        const closePopupButton = document.getElementById('closePopup');
 
-            function closeAboutPopup() {
-                aboutPopup.style.display = 'none';
-            }
+        showGalleryButton.addEventListener('click', () => {
+            popup.style.display = 'block';
+        });
 
-            function toggleGallery() {
-                if (popup.style.display === 'none' || popup.style.display === '') {
-                    popup.style.display = 'block';
-                } else {
-                    popup.style.display = 'none';
-                }
-            }
+        closePopupButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
 
-            function onMouseDown(e) {
-                isDragging = true;
-                offsetX = e.clientX - floatingBtn.getBoundingClientRect().left;
-                offsetY = e.clientY - floatingBtn.getBoundingClientRect().top;
-                floatingBtn.style.transition = 'none';
-            }
-
-            function onMouseMove(e) {
-                if (isDragging) {
-                    floatingBtn.style.left = `${e.clientX - offsetX}px`;
-                    floatingBtn.style.top = `${e.clientY - offsetY}px`;
-                    positionMenu();
-                }
-            }
-
-            function onMouseUp() {
-                isDragging = false;
-                floatingBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
-            }
-
-            function onTouchStart(e) {
-                isDragging = true;
-                offsetX = e.touches[0].clientX - floatingBtn.getBoundingClientRect().left;
-                offsetY = e.touches[0].clientY - floatingBtn.getBoundingClientRect().top;
-                floatingBtn.style.transition = 'none';
-            }
-
-            function onTouchMove(e) {
-                if (isDragging) {
-                    floatingBtn.style.left = `${e.touches[0].clientX - offsetX}px`;
-                    floatingBtn.style.top = `${e.touches[0].clientY - offsetY}px`;
-                    positionMenu();
-                }
-            }
-
-            function onTouchEnd() {
-                isDragging = false;
-                floatingBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
-            }
-
-            function positionMenu() {
-                const rect = floatingBtn.getBoundingClientRect();
-                menu.style.left = `${rect.left + window.scrollX + rect.width / 2 - menu.clientWidth / 2}px`;
-                menu.style.top = `${rect.top + window.scrollY + rect.height + 10}px`;
-            }
-
-            function maximizePopup() {
-                popup.style.width = '100%';
-                popup.style.height = '100%';
-                popup.style.top = '0';
-                popup.style.left = '0';
-                popup.style.transform = 'none';
-            }
-
-            function minimizePopup() {
-                popup.style.width = '80%';
-                popup.style.height = '80%';
-                popup.style.top = '50%';
-                popup.style.left = '50%';
-                popup.style.transform = 'translate(-50%, -50%)';
-            }
-
-            floatingBtn.addEventListener('mousedown', onMouseDown);
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-
-            floatingBtn.addEventListener('touchstart', onTouchStart);
-            document.addEventListener('touchmove', onTouchMove);
-            document.addEventListener('touchend', onTouchEnd);
-
-            floatingBtn.addEventListener('click', toggleMenu);
-            aboutLink.addEventListener('click', toggleAboutPopup); // Event listener for About link
-            closeAboutBtn.addEventListener('click', closeAboutPopup); // Event listener for Close button of About popup
-            showGallery.addEventListener('click', toggleGallery);
-            closeBtn.addEventListener('click', toggleGallery);
-            maximizeBtn.addEventListener('click', maximizePopup);
-            minimizeBtn.addEventListener('click', minimizePopup);
-
-            // Initial positioning of the menu
-            positionMenu();
+        // JavaScript code for the About link
+        const aboutLink = document.getElementById('aboutLink');
+        aboutLink.addEventListener('click', () => {
+            const aboutSection = document.createElement('div');
+            aboutSection.className = 'about';
+            aboutSection.innerHTML = `
+                <h2>About Me</h2>
+                <p>Hello everyone, I am Rosan KC, from Banganga-10, Kapilvastu, Pakadiachapa (NEPAL)</p>
+                <p>We offer services such as creating or designing images, logo design, any type of videos, thumbnails, etc.</p>
+            `;
+            document.body.appendChild(aboutSection);
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 </body>
